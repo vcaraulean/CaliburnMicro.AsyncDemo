@@ -62,8 +62,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="HandlingMessageWithTask.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ShellViewModel.cs" />
+    <Compile Include="SimpleCoroutine.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
