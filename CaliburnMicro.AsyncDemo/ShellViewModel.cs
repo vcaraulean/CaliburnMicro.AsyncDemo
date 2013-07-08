@@ -11,6 +11,20 @@ namespace CaliburnMicro.AsyncDemo
 			LogMessages = new BindableCollection<LogEntry>();
 		}
 
+		protected override async void OnActivate()
+		{
+			Log("OnActivate - starting a 8 seconds task");
+			await Task.Delay(8000);
+			Log("OnActivate completed");
+		}
+
+		protected override async void OnInitialize()
+		{
+			Log("OnInitialize - starting a 7 seconds task");
+			await Task.Delay(7000);
+			Log("OnInitialize completed");
+		}
+
 		protected override async void OnViewAttached(object view, object context)
 		{
 			Log("OnViewAttached - starting a 3 seconds task");
@@ -41,6 +55,7 @@ namespace CaliburnMicro.AsyncDemo
 
 		private void Log(string message)
 		{
+			Console.WriteLine(message);
 			LogMessages.Add(new LogEntry(message));
 		}
 

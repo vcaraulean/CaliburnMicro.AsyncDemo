@@ -49,6 +49,7 @@
 					  BorderThickness="0"
 					  Grid.Row="3">
 			<DataGrid ItemsSource="{Binding LogMessages}"
+					  IsReadOnly="True"
 					  AutoGenerateColumns="False">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Time stamp"
