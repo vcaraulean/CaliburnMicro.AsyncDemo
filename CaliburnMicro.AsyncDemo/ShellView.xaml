@@ -16,7 +16,8 @@
 		</Style>
 	</Window.Resources>
 
-	<Grid Background="White" Margin="10">
+	<Grid Background="White"
+		  Margin="10">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
@@ -30,16 +31,27 @@
 				   FontSize="30"
 				   Margin="20" />
 
-		<StackPanel Grid.Row="1">
-			<Button x:Name="RunTask1Async"
-					Content="Run task 1 (conventional binding)" />
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<StackPanel>
+				<Button x:Name="RunTask1Async"
+						Content="Run task 1 (conventional binding)" />
 
-			<Button cal:Message.Attach="RunTask1Async"
-					Content="Run task 1 (with Message.Attach)" />
+				<Button cal:Message.Attach="RunTask1Async"
+						Content="Run task 1 (with Message.Attach)" />
 
-			<Button x:Name="WrapIResultInTaskAsync"
-					Content="Wrap couroutine in task" />
-		</StackPanel>
+				<Button x:Name="WrapIResultInTaskAsync"
+						Content="Wrap couroutine in task" />
+			</StackPanel>
+
+			<StackPanel Grid.Column="1">
+				<Button x:Name="PublishEventAndHandleAsync"
+						Content="Publish event and handle with a task" />
+			</StackPanel>
+		</Grid>
 
 		<TextBlock Text="log messages:"
 				   Grid.Row="2"

@@ -6,11 +6,12 @@ namespace CaliburnMicro.AsyncDemo
 {
 	public class SimpleCoroutine : IResult
 	{
-		public async void Execute(ActionExecutionContext context)
+		public void Execute(ActionExecutionContext context)
 		{
 			// simulating work
-			await Task.Delay(6000);
-			Completed(this, new ResultCompletionEventArgs());
+			Task
+				.Run(() => Task.Delay(6000))
+				.ContinueWith(task => Completed(this, new ResultCompletionEventArgs()));
 		}
 
 		public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };

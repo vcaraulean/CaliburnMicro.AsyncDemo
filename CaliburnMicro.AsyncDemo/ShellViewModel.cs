@@ -6,8 +6,11 @@ namespace CaliburnMicro.AsyncDemo
 {
 	public class ShellViewModel : Screen, IShell
 	{
-		public ShellViewModel()
+		private readonly IEventAggregator eventAggregator;
+
+		public ShellViewModel(IEventAggregator eventAggregator, MessageHandler messageHandler)
 		{
+			this.eventAggregator = eventAggregator;
 			LogMessages = new BindableCollection<LogEntry>();
 		}
 
@@ -53,13 +56,18 @@ namespace CaliburnMicro.AsyncDemo
 			Log("WrapIResultInTaskAsync completed");
 		}
 
-		private void Log(string message)
+		public void PublishEventAndHandleAsync()
+		{
+			eventAggregator.Publish(new Message());
+		}
+
+		public static void Log(string message)
 		{
 			Console.WriteLine(message);
 			LogMessages.Add(new LogEntry(message));
 		}
 
-		public IObservableCollection<LogEntry> LogMessages { get; protected set; }
+		public static IObservableCollection<LogEntry> LogMessages { get; protected set; }
 	}
 
 	public class LogEntry

@@ -20,6 +20,8 @@ namespace CaliburnMicro.AsyncDemo
 			container.Singleton<IWindowManager, WindowManager>();
 			container.Singleton<IEventAggregator, EventAggregator>();
 			container.PerRequest<IShell, ShellViewModel>();
+			
+			container.Singleton<MessageHandler>();
 		}
 
 		protected override object GetInstance(Type service, string key)

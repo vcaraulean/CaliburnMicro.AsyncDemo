@@ -62,7 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="HandlingMessageWithTask.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="SimpleCoroutine.cs" />
