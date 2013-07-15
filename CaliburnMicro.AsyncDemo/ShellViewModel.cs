@@ -12,6 +12,15 @@ namespace CaliburnMicro.AsyncDemo
 		{
 			this.eventAggregator = eventAggregator;
 			LogMessages = new BindableCollection<LogEntry>();
+
+			ViewAttached += OnViewAttachedEventHandler;
+		}
+
+		private async void OnViewAttachedEventHandler(object sender, ViewAttachedEventArgs args)
+		{
+			Log("OnViewAttachedEventHandler- starting a 1 second task");
+			await Task.Delay(1000);
+			Log("OnViewAttachedEventHandler completed");
 		}
 
 		protected override async void OnActivate()
@@ -42,14 +51,14 @@ namespace CaliburnMicro.AsyncDemo
 			Log("OnViewLoaded completed");
 		}
 
-		public async Task RunTask1Async()
+		public async void RunTask1Async()
 		{
 			Log("RunTask1Async - starting a 4 second task");
 			await Task.Delay(4000);
 			Log("RunTask1Async completed");
 		}
 
-		public async Task WrapIResultInTaskAsync()
+		public async void WrapIResultInTaskAsync()
 		{
 			Log("WrapIResultInTaskAsync - executing coroutine");
 			await new SimpleCoroutine().ExecuteAsync();
